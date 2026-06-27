@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { Menu, X, Code2, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -42,7 +43,7 @@ export function Navbar() {
       )}
     >
       <nav className="container flex h-16 items-center justify-between">
-        <a
+        <Link
           href="/"
           onClick={handleLogoClick}
           className="flex items-center gap-2 font-display text-base font-semibold tracking-tight"
@@ -53,17 +54,17 @@ export function Navbar() {
           <span>
             Taranjeet<span className="text-primary">.</span>dev
           </span>
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
