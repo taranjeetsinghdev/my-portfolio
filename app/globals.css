@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme — warm paper, ink navy, burnt amber + violet accents */
+    --background: 36 33% 97%;
+    --foreground: 222 28% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 28% 12%;
+
+    --border: 36 18% 87%;
+    --input: 36 18% 87%;
+
+    --muted: 36 20% 92%;
+    --muted-foreground: 222 10% 38%;
+
+    --primary: 28 72% 45%;
+    --primary-foreground: 36 40% 98%;
+
+    --secondary: 254 55% 53%;
+    --secondary-foreground: 36 40% 98%;
+
+    --accent: 36 22% 90%;
+    --accent-foreground: 222 28% 12%;
+
+    --destructive: 0 70% 47%;
+    --destructive-foreground: 36 40% 98%;
+
+    --ring: 28 72% 45%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark theme — deep charcoal-navy, amber + violet accents */
+    --background: 222 26% 7%;
+    --foreground: 210 24% 93%;
+
+    --card: 222 20% 10%;
+    --card-foreground: 210 24% 93%;
+
+    --border: 222 16% 19%;
+    --input: 222 16% 19%;
+
+    --muted: 222 16% 14%;
+    --muted-foreground: 215 14% 62%;
+
+    --primary: 36 88% 58%;
+    --primary-foreground: 222 30% 9%;
+
+    --secondary: 254 78% 72%;
+    --secondary-foreground: 222 30% 9%;
+
+    --accent: 222 16% 16%;
+    --accent-foreground: 210 24% 93%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 210 24% 93%;
+
+    --ring: 36 88% 58%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+}
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* JSX-tag eyebrow + signature code-card utilities */
+@layer components {
+  .tag-eyebrow {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/60 px-3 py-1 font-mono text-[0.7rem] tracking-tight text-muted-foreground;
+  }
+
+  .glow-border {
+    box-shadow: 0 0 0 1px hsl(var(--border)), 0 20px 60px -20px hsl(var(--primary) / 0.25);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.bg-grid {
+  background-image: var(--tw-gradient-grid, none);
+}
